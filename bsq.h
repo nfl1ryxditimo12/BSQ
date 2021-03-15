@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:44:48 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 14:59:44 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-/* read.c */
+/* 
+ *
+ * read.c */
 char	*get_value(int fd, char *c, int *i);
 int	check_condition(int fd);
 void	fill_board(int fd);
