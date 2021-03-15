@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:47:45 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 15:29:02 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <stdio.h>
 
 char	**g_board;
-int	g_row_size;
-int	g_col_size;
+int		g_row_size;
+int		g_col_size;
 char	g_blank;
 char	g_obstacle;
 char	g_fill;
@@ -25,7 +25,7 @@ char	*get_value(int fd, char *c, int *i)
 	char	*str;
 
 	if (!(str = malloc(128)))
-		exit(1);
+		exit (1);
 	while (c[0] != '\n')
 	{
 		str[*i] = c[0];
@@ -37,7 +37,7 @@ char	*get_value(int fd, char *c, int *i)
 	return (str);
 }
 
-int	check_condition(int fd)
+int	make_condition(int fd)
 {
 	char	*cond;
 	char	*tmp;
@@ -60,6 +60,7 @@ int	check_condition(int fd)
 		else
 			return (0);
 	free(cond);
+	check_condition();
 	return (1);
 }
 
@@ -92,8 +93,8 @@ void	read_file(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		print_error("Can not open file");
-	check_condition(fd);
+	make_condition(fd);
 	fill_board(fd);
-	board_valid();
+	// board_valid();
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:31:50 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:41:25 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 17:06:08 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,27 @@ void	board_valid(void)
 		while (++j < g_col_size)
 		{
 			c = g_board[i][j];
-			if (c != g_obstacle || c != g_blank)
+			if (!(c = g_obstacle || c == g_blank))
 			{
 				print_error(BOARD_ERR);
 				exit(1);
 			}
 		}
+	}
+}
+
+void	check_condition(void)
+{
+	if (g_blank == g_obstacle
+			|| g_blank == g_fill
+			|| g_obstacle == g_fill)
+	{
+		print_error(COND_ERR);
+		exit(1);
+	}
+	if (!g_fill || !g_blank || !g_obstacle)
+	{
+		print_error(COND_ERR);
+		exit(1);
 	}
 }

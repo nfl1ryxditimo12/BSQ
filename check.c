@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:55:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:03:03 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 15:29:35 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	board_check(void)
 			j++;
 		if (g_col_size != j)
 		{
-			print_error(COL_ERR);
+			print_error(BOARD_ERR);
 			exit(1);
 		}
 	}

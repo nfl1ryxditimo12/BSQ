@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:59:44 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/15 15:28:27 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-/* 
- *
- * read.c */
+/* read.c */
 char	*get_value(int fd, char *c, int *i);
-int	check_condition(int fd);
+int		make_condition(int fd);
 void	fill_board(int fd);
 void	read_file(char *file);
 
@@ -34,13 +32,14 @@ void	read_file(char *file);
 void	print_error(char *error);
 
 /* check.c */
-int	board_check(void);
+int		board_check(void);
 
 /* string.c */
 char	*ft_strdup(char *str);
 
 /* exception.c */
 void	board_valid(void);
+void	check_condition(void);
 
 /* global variable */
 extern char	**g_board;
