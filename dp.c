@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dp.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 16:58:31 by seonkim          ###   ########.fr       */
+/*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
+/*   Updated: 2021/03/15 17:07:35 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-#include <stdio.h>
 
-int main(int argc, char **argv)
+int	min(int x, int y)
 {
-	int i = -1;
-	if (argc == 2)
+	return (x < y ? x : y);
+}
+
+void	process(void)
+{
+	int max;
+	int i;
+	int j;
+
+	max = 0;
+	i = -1;
+	while (++i < g_row_size)
 	{
-		read_file(argv[1]);
-		process();
-		while (++i < g_row_size)
-			printf("%s\n", g_board[i]);
+		j = -1;
+		while (++j < g_col_size)
+		{
+			if (g_board[i][j] == g_obstacle)
+				continue ;
+			g_board[i][j] = min(min(g_board[i][j - 1], g_board[i - 1][j - 1]), g_board[i - 1][j]) + 1;
+			if (max < g_board[i][j])
+				max = g_board[i][j];
+		}
 	}
-	return (0);
 }

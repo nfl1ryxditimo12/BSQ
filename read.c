@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:47:45 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 17:01:23 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_value(int fd, char *c, int *i)
 	return (str);
 }
 
-int	check_condition(int fd)
+int	make_condition(int fd)
 {
 	char	*cond;
 	char	*tmp;
@@ -54,11 +54,15 @@ int	check_condition(int fd)
 	g_obstacle = cond[i - 2];
 	g_blank = cond[i - 3];
 	g_row_size = 0;
-	while (++j < i - 1)
+	//cheick_condition();
+	while (++j < i - 3)
 		if ('0' <= cond[j] && cond[j] <= '9')
 			g_row_size = g_row_size * 10 + cond[j] - '0';
 		else
-			return (0);
+		{
+			print_error(COND_ERR);
+			exit(1);
+		}
 	free(cond);
 	return (1);
 }
@@ -88,12 +92,18 @@ void	fill_board(int fd)
 void	read_file(char *file)
 {
 	int	fd;
-
+	int	i = -1;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		print_error("Can not open file");
-	check_condition(fd);
+	make_condition(fd);
 	fill_board(fd);
 	board_valid();
 	close(fd);
+	while (++i < g_row_size)
+		printf("%s\n", g_board[i]);
+	printf("%c\n", g_fill);
+	printf("%c\n", g_blank);
+	printf("%c\n", g_obstacle);
+	printf("\n\n");
 }

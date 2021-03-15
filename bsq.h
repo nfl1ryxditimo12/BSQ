@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 14:44:48 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/15 16:57:56 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* read.c */
 char	*get_value(int fd, char *c, int *i);
-int	check_condition(int fd);
+int	make_condition(int fd);
 void	fill_board(int fd);
 void	read_file(char *file);
 
@@ -40,6 +40,8 @@ char	*ft_strdup(char *str);
 /* exception.c */
 void	board_valid(void);
 
+void	process(void);
+
 /* global variable */
 extern char	**g_board;
 extern char	g_blank;
@@ -47,5 +49,7 @@ extern char	g_obstacle;
 extern char	g_fill;
 extern int	g_row_size;
 extern int	g_col_size;
+
+extern int	**location;
 
 #endif
