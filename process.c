@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 04:21:28 by seonkim          ###   ########.fr       */
+/*   Created: 2021/03/17 04:06:49 by seonkim           #+#    #+#             */
+/*   Updated: 2021/03/17 04:20:48 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
-#include <stdio.h>
 
-int main(int argc, char **argv)
+void	process(void)
 {
-	int i = -1;
+	int i;
 	int j;
-	if (argc == 2)
+
+	i = g_max_row + 1;
+	while (--i > g_max_row - g_max)
 	{
-		read_file(argv[1]);
-		dp();
-		process();
-		while (++i < g_row_size)
-		{
-			j = -1;
-			while (++j < g_col_size)
-				printf("%c ", g_board[i][j]);
-			printf("\n");
-		}
+		j = g_max_col + 1;
+		while (--j > g_max_col - g_max)
+			g_board[i][j] = g_fill;
 	}
-	return (0);
 }

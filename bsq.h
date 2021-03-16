@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 16:57:56 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 04:21:11 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ char	*ft_strdup(char *str);
 /* exception.c */
 void	board_valid(void);
 
+void	first_location(void);
+void	dp(void);
+void	fill_tab(void);
+void	allocation(void);
+
 void	process(void);
 
 /* global variable */
@@ -49,7 +54,9 @@ extern char	g_obstacle;
 extern char	g_fill;
 extern int	g_row_size;
 extern int	g_col_size;
-
-extern int	**location;
+extern int	**g_tab;
+extern int	g_max_row;
+extern int	g_max_col;
+extern int	g_max;
 
 #endif
