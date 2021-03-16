@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 15:28:27 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/15 17:30:26 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ extern char	**g_board;
 extern char	g_blank;
 extern char	g_obstacle;
 extern char	g_fill;
+extern int	**g_int_board;
 extern int	g_row_size;
 extern int	g_col_size;
 
