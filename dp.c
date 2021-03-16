@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 17:07:35 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/16 22:09:37 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	process(void)
 
 	max = 0;
 	i = -1;
+	/*
 	while (++i < g_row_size)
 	{
 		j = -1;
@@ -35,6 +36,25 @@ void	process(void)
 			g_board[i][j] = min(min(g_board[i][j - 1], g_board[i - 1][j - 1]), g_board[i - 1][j]) + 1;
 			if (max < g_board[i][j])
 				max = g_board[i][j];
+		}
+	}
+	*/
+	while (++i < g_row_size)
+	{
+		j = -1;
+		while (++j < g_col_size)
+		{
+			if (g_board[i][j] == g_blank)
+			{
+				rslt = map[i - 1][j];
+				rslt = rslt < map[i][j - 1] ? rslt : map[i][j - 1];
+				rslt = rslt < map[i - 1][j - 1] ? rslt : map[i - 1][j - 1];
+				if (rslt > 0)
+				{
+					map[i][j] = rslt + 1;
+					ans = ans > map[i][j] ? ans : map[i][j];
+				}
+			}
 		}
 	}
 }
