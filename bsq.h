@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 20:35:25 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 21:15:17 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 # include <fcntl.h>
 
 /* read.c */
-char	*ft_strdup(char *str);
+char	*ft_bufcpy(char *dest, char *src, int n);
 char	*get_value(int fd);
+int		ft_atoi(char *str, int i);
+char	*make_condition(char *cond);
 void	read_file(char *file);
 
 /* dp.c */

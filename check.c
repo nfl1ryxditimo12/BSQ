@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:55:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 17:39:57 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 21:23:52 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ int    board_valid(void)
     int     j;
     char    c;
 
+	g_col_size = 0;
+	while (g_board[0][g_col_size])
+		g_col_size++;
+	printf("col: %d\n", g_col_size);
     i = -1;
     while (++i < g_row_size)
     {
 		j = -1;
-	    while (++j < g_col_size)
+	    while (g_board[i][++j])
 	    {
 	        c = g_board[i][j];
 			if (!(c == g_obstacle || c == g_blank))
