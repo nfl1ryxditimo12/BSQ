@@ -6,12 +6,14 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 17:45:00 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 21:06:04 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 #include <stdio.h>
+
+# define BUFFER_SIZE 1000000
 
 char	**g_board;
 int		g_row_size;
@@ -20,98 +22,84 @@ char	g_blank;
 char	g_obstacle;
 char	g_fill;
 
-char	*ft_strdup(char *str)
+char	*ft_bufcpy(char *dest, char *src, int n)
 {
-	char	*dest;
-	int		i;
+	char *d;
 
-	i = 0;
-	while (str[i])
-		i++;
-	dest = (char *)malloc(i + 1);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	dest[i] = 0;
+	d = dest;
+	while (n--)
+		*d++ = *src++;
 	return (dest);
 }
 
-char	*get_value(int fd, char *c, int *i)
+char	*get_value(int fd)
 {
-	printf("get_value\n");
-	char	*str;
-
-	if (!(str = malloc(256)))
-		exit(1);
-	while (c[0] != '\n')
-	{
-		str[*i] = c[0];
-		read(fd, c, 1);
-		(*i)++;
-	}
-	if (c[0] == '\n')
-		read(fd, c, 1);
-	return (str);
-}
-
-int		make_condition(int fd)
-{
-	printf("make_condition\n");
-	char	*cond;
+	char	buf[BUFFER_SIZE];
+	char	*content;
 	char	*tmp;
-	char	c[1];
-	int		i;
-	int		j;
-
-	i = -1;
-	j = -1;
-	tmp = get_value(fd, c, &i);
-	cond = ft_strdup(tmp);
-	free(tmp);
-	g_fill = cond[i - 1];
-	g_obstacle = cond[i - 2];
-	g_blank = cond[i - 3];
-	g_row_size = 0;
-	while (++j < i - 3)
-		if ('0' <= cond[j] && cond[j] <= '9')
-			g_row_size = g_row_size * 10 + cond[j] - '0';
-		else
-		{
-			print_error(COND_ERR);
-			exit(1);
-		}
-	free(cond);
-	return (1);
-}
-
-void	fill_board(int fd)
-{
-	printf("fill_board\n");
-	char	*tmp;
-	char	c[1];
 	int		len;
-	int		i;
+	int		size;
 
-	if (!(g_board = (char **)malloc(sizeof(char *) * (g_row_size + 1))))
-		return ;
-	printf("fill_board_malloc\n");
-	i = -1;
-	while (++i < g_row_size)
+	if (!(content = malloc(sizeof(char))))
+		return (NULL);
+	*content = '\0';
+	size = 0;
+	while ((len = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		len = -1;
-		tmp = get_value(fd, c, &len);
-		g_col_size = len;
-		g_board[i] = ft_strdup(tmp);
-		free(tmp);
+		if (!(tmp = malloc((size + len + 1) * sizeof(char))))
+			break ;
+		tmp = ft_bufcpy(tmp, content, size);
+		free(content);
+		ft_bufcpy(tmp + size, buf, len);
+		content = tmp;
+		size += len;
+		content[size] = '\0';
 	}
-	printf("fill_board_jaebal\n");
-	board_valid();
+	if (len)
+		free(content);
+	return ((len) ? NULL : content);
+}
+
+int		ft_atoi(char *str, int i)
+{
+	int	j;
+	int	ret;
+
+	j = -1;
+	ret = 0;
+	while (++j < i)
+	{
+		ret *= 10;
+		ret += *str - '0';
+	}
+	return (ret);
+}
+
+char	*make_condition(char *cond)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	tmp = cond;
+	while (!is_newline(*cond))
+	{
+		i++;
+		cond++;
+	}
+	g_row_size = ft_atoi(tmp, i - 3);
+	g_fill = *(cond - 1);
+	g_obstacle = *(cond - 2);
+	g_blank = *(cond - 3);
+	printf("%d, %c, %c, %c\n", g_row_size, g_blank, g_obstacle, g_fill);
+	cond++;
+	return (cond);
 }
 
 void	read_file(char *file)
 {
-	printf("read_file\n");
-	int	fd;
+	int		fd;
+	char	*cond;
 
 	if (*file)
 		fd = open(file, O_RDONLY);
@@ -119,8 +107,8 @@ void	read_file(char *file)
 		fd = 0;
 	if (fd == -1)
 		print_error("Cannot open file\n");
-	make_condition(fd);
-	fill_board(fd);
+	cond = make_condition(get_value(fd));
+	printf("%s\n", cond);
 	board_valid();
 	if (*file)
 		close(fd);

@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 16:57:55 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 20:35:25 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@
 
 /* read.c */
 char	*ft_strdup(char *str);
-char	*get_value(int fd, char *c, int *i);
-int		make_condition(int fd);
-void	fill_board(int fd);
+char	*get_value(int fd);
 void	read_file(char *file);
 
 /* dp.c */
@@ -38,6 +36,12 @@ void	dp(void);
 void	g_arr_free(void);
 void	print_error(char *error);
 int		board_valid(void);
+
+/* split.c */
+int		is_newline(char c);
+int		wd_len(char *str);
+void	ftt_strcpy(char *dest, char *from, char *to);
+char	**ft_split(char *str);
 
 /* global variable */
 extern char	**g_board;

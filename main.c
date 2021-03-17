@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 17:31:01 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 20:11:52 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	process(void)
 {
-	printf("process\n");
 	int	i;
 	int	j;
 
@@ -30,13 +29,18 @@ void	process(void)
 
 int 	main(int argc, char **argv)
 {
-	printf("main\n");
-	if (argc < 3)
+	int		i;
+
+	i = 0;
+	if (argc == 1)
 	{
-		if (argc == 2)
-			read_file(argv[1]);
-		else
-			read_file(NULL);
+		read_file(NULL);
+		dp();
+		process();
+	}
+	while (++i < argc)
+	{
+		read_file(argv[i]);
 		dp();
 		process();
 	}
