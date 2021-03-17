@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 04:21:49 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 12:36:26 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void	allocation(void)
 	int j;
 
 	i = -1;
-	g_tab = (int **)malloc(sizeof(int *) * (g_row_size));
+	if (!(g_tab = (int **)malloc(sizeof(int *) * (g_row_size))))
+		exit(1);
 	while (++i < g_row_size)
 	{
 		j = -1;
-		g_tab[i] = (int *)malloc(sizeof(int) * (g_col_size));
+		if (!(g_tab[i] = (int *)malloc(sizeof(int) * (g_col_size))))
+			exit(1);
 		while (++j < g_col_size)
 			g_tab[i][j] = 1;
 	}

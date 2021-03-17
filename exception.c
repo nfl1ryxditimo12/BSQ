@@ -6,11 +6,12 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 17:31:50 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/15 15:17:05 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 12:32:39 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+
 
 void	board_valid(void)
 {
