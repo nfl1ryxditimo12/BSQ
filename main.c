@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 15:57:49 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 16:18:25 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int 	main(int argc, char **argv)
 	int	j;
 
 	i = -1;
-	if (argc == 2)
+	if (argc < 3)
 	{
-		read_file(argv[1]);
+		if (argc == 2)
+			read_file(argv[1]);
+		else
+			read_file(NULL);
 		dp();
 		process();
 		while (++i < g_row_size)
@@ -45,10 +48,6 @@ int 	main(int argc, char **argv)
 				printf("%c ", g_board[i][j]);
 			printf("\n");
 		}
-	}
-	else if (argc == 1)
-	{
-		read_file(NULL);
 	}
 	return (0);
 }

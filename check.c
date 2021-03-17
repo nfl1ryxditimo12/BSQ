@@ -6,11 +6,25 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:55:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 15:29:47 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 16:57:28 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+
+void	g_arr_free(void)
+{
+	int i;
+
+	i = 0;
+	while (i < g_row_size + 1)
+		free(g_board[i++]);
+	free(g_board);
+	i = 0;
+	while (i < g_row_size)
+		free(g_tab[i++]);
+	free(g_tab);
+}
 
 void	print_error(char *error)
 {

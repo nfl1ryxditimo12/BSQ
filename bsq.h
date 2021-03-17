@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 16:10:04 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 16:57:55 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	set_tab(void);
 void	dp(void);
 
 /* check.c */
+void	g_arr_free(void);
 void	print_error(char *error);
 int		board_valid(void);
 

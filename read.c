@@ -6,15 +6,15 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 15:34:57 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 16:57:14 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
 char	**g_board;
-int	g_row_size;
-int	g_col_size;
+int		g_row_size;
+int		g_col_size;
 char	g_blank;
 char	g_obstacle;
 char	g_fill;
@@ -39,7 +39,7 @@ char	*get_value(int fd, char *c, int *i)
 {
 	char	*str;
 
-	if (!(str = malloc(1025)))
+	if (!(str = malloc(256)))
 		exit(1);
 	while (c[0] != '\n')
 	{
@@ -52,13 +52,13 @@ char	*get_value(int fd, char *c, int *i)
 	return (str);
 }
 
-int	make_condition(int fd)
+int		make_condition(int fd)
 {
 	char	*cond;
 	char	*tmp;
 	char	c[1];
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = -1;
 	j = -1;
@@ -85,8 +85,8 @@ void	fill_board(int fd)
 {
 	char	*tmp;
 	char	c[1];
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	if (!(g_board = (char **)malloc(sizeof(char *) * (g_row_size + 1))))
 		return ;
@@ -105,11 +105,16 @@ void	fill_board(int fd)
 void	read_file(char *file)
 {
 	int	fd;
-	fd = open(file, O_RDONLY);
+
+	if (*file)
+		fd = open(file, O_RDONLY);
+	else
+		fd = 0;
 	if (fd == -1)
-		print_error("Can not open file");
+		print_error("Cannot open file\n");
 	make_condition(fd);
 	fill_board(fd);
 	board_valid();
-	close(fd);
+	if (*file)
+		close(fd);
 }
