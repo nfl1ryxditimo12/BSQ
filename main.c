@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 21:13:01 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 00:04:22 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void	process(void)
 		j = g_max_col + 1;
 		while (--j > g_max_col - g_max)
 			g_board[i][j] = g_fill;
+	}
+	i = -1;
+	while (++i < g_row_size)
+	{
+		j = -1;
+		while (g_board[i][++j])
+			write(1, &g_board[i][j], 1);
+		write(1, "\n", 1);
 	}
 }
 

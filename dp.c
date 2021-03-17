@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 17:27:52 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 00:09:50 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	first_location(void)
 			}
 		}
 	}
+	printf("first_location_finish\n");
 }
 
 void	set_tab(void)
@@ -61,6 +62,7 @@ void	set_tab(void)
 				g_tab[i][j] = 1;
 		}
 	}
+	printf("set_tab_finish\n");
 }
 
 void	dp(void)
@@ -91,5 +93,6 @@ void	dp(void)
 			}
 		}
 	}
+	printf("dp call first_location\n");
 	first_location();
 }

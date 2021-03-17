@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 21:25:42 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 00:08:19 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ void	read_file(char *file)
 		print_error("Cannot open file\n");
 	g_board = ft_split(make_condition(get_value(fd)));
 	for (int i = 0; g_board[i]; i++)
+	{
 		for (int j = 0; g_board[i][j]; j++)
-			{
-				printf("%c", g_board[i][j]);
-				printf("\n");
-			}
+			printf("%c", g_board[i][j]);
+		printf("\n");
+	}
 	board_valid();
 	if (*file)
 		close(fd);
