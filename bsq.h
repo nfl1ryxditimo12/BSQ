@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 04:21:11 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 12:46:30 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	board_check(void);
 char	*ft_strdup(char *str);
 
 /* exception.c */
+void	g_arr_free(void);
 void	board_valid(void);
 
 void	first_location(void);

@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 04:21:28 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 12:46:34 by seonkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 				printf("%c ", g_board[i][j]);
 			printf("\n");
 		}
+		g_arr_free();
 	}
 	return (0);
 }
