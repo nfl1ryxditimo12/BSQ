@@ -6,11 +6,12 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 16:57:14 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 17:45:00 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+#include <stdio.h>
 
 char	**g_board;
 int		g_row_size;
@@ -37,6 +38,7 @@ char	*ft_strdup(char *str)
 
 char	*get_value(int fd, char *c, int *i)
 {
+	printf("get_value\n");
 	char	*str;
 
 	if (!(str = malloc(256)))
@@ -54,6 +56,7 @@ char	*get_value(int fd, char *c, int *i)
 
 int		make_condition(int fd)
 {
+	printf("make_condition\n");
 	char	*cond;
 	char	*tmp;
 	char	c[1];
@@ -83,6 +86,7 @@ int		make_condition(int fd)
 
 void	fill_board(int fd)
 {
+	printf("fill_board\n");
 	char	*tmp;
 	char	c[1];
 	int		len;
@@ -90,6 +94,7 @@ void	fill_board(int fd)
 
 	if (!(g_board = (char **)malloc(sizeof(char *) * (g_row_size + 1))))
 		return ;
+	printf("fill_board_malloc\n");
 	i = -1;
 	while (++i < g_row_size)
 	{
@@ -99,11 +104,13 @@ void	fill_board(int fd)
 		g_board[i] = ft_strdup(tmp);
 		free(tmp);
 	}
+	printf("fill_board_jaebal\n");
 	board_valid();
 }
 
 void	read_file(char *file)
 {
+	printf("read_file\n");
 	int	fd;
 
 	if (*file)

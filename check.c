@@ -6,11 +6,12 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:55:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 16:57:28 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 17:39:57 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
+#include <stdio.h>
 
 void	g_arr_free(void)
 {
@@ -36,6 +37,7 @@ void	print_error(char *error)
 
 int    board_valid(void)
 {
+	printf("board_valid\n");
     int     i;
     int     j;
     char    c;

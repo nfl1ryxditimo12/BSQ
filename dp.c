@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 15:52:54 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/17 17:27:52 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	g_max;
 
 void	first_location(void)
 {
+	printf("first_location\n");
 	int i;
 	int j;
 
@@ -41,12 +42,12 @@ void	first_location(void)
 
 void	set_tab(void)
 {
+	printf("set_tab\n");
 	int i;
 	int j;
 
 	i = -1;
-	if (!(g_tab = (int **)malloc(sizeof(int *) * (g_row_size))))
-		exit(1);
+	g_tab = (int **)malloc(sizeof(int *) * (g_row_size) + 1);
 	while (++i < g_row_size)
 	{
 		j = -1;
@@ -64,6 +65,7 @@ void	set_tab(void)
 
 void	dp(void)
 {
+	printf("dp\n");
 	int	rslt;
 	int	i;
 	int	j;
