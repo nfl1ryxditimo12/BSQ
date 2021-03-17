@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/17 03:34:48 by seonkim          ###   ########.fr       */
+/*   Updated: 2021/03/17 15:34:57 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@ int	g_col_size;
 char	g_blank;
 char	g_obstacle;
 char	g_fill;
+
+char	*ft_strdup(char *str)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	dest = (char *)malloc(i + 1);
+	i = -1;
+	while (str[++i])
+		dest[i] = str[i];
+	dest[i] = 0;
+	return (dest);
+}
 
 char	*get_value(int fd, char *c, int *i)
 {
@@ -83,7 +99,7 @@ void	fill_board(int fd)
 		g_board[i] = ft_strdup(tmp);
 		free(tmp);
 	}
-	board_check();
+	board_valid();
 }
 
 void	read_file(char *file)
