@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:55:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 10:12:38 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 10:37:28 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	print_error(char *error)
 
 int    board_valid(void)
 {
-	printf("board_valid\n");
     int     i;
     int     j;
 
@@ -57,6 +56,5 @@ int    board_valid(void)
 		if (j != g_col_size)
 			print_error(BOARD_ERR);
 	}
-	printf("board_valid_finish\n");
 	return (1);
 }

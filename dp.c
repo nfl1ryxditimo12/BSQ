@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 10:15:16 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 10:37:58 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	set_tab(void)
 
 void	dp(void)
 {
-	printf("dp\n");
 	int	rslt;
 	int	i;
 	int	j;
@@ -89,6 +88,5 @@ void	dp(void)
 			}
 		}
 	}
-	printf("dp call first_location\n");
 	first_location();
 }

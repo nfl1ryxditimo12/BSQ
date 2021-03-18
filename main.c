@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:21:52 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 00:04:22 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 10:59:21 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ void	process(void)
 	}
 }
 
+void	read_stdin(void)
+{
+	int		fd;
+	int		i;
+	int		j;
+	
+	i = -1;
+	fd = open("stdin", O_WRONLY | O_TRUNC | O_CREAT, 0755);
+	if (fd == -1)
+		print_error("Cannot creat stdin file\n");
+	g_board = ft_split(make_condition(get_value(fd)));
+	while (g_board[++i])
+	{
+		j = -1;
+		while (g_board[i][++j])
+			write(1, &g_board[i][j], 1);
+		write(1, "\n", 1);
+	}
+	board_valid();
+	close(fd);
+}
+
 int 	main(int argc, char **argv)
 {
 	int		i;
@@ -42,7 +64,7 @@ int 	main(int argc, char **argv)
 	i = 0;
 	if (argc == 1)
 	{
-		read_file(NULL);
+		read_stdin();
 		dp();
 		process();
 	}

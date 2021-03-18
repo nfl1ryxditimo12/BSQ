@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 10:13:35 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 10:58:57 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,21 +99,21 @@ char	*make_condition(char *cond)
 void	read_file(char *file)
 {
 	int		fd;
+	int		i;
+	int		j;
 
-	if (*file)
-		fd = open(file, O_RDONLY);
-	else
-		fd = 0;
-	if (fd == -1)
-		print_error("Cannot open file\n");
+	i = -1;
+	fd = open(file, O_RDONLY);
+		if (fd == -1)
+			print_error("Cannot open file\n");
 	g_board = ft_split(make_condition(get_value(fd)));
-	for (int i = 0; g_board[i]; i++)
+	while (g_board[++i])
 	{
-		for (int j = 0; g_board[i][j]; j++)
-			printf("%c", g_board[i][j]);
-		printf("\n");
+		j = -1;
+		while (g_board[i][++j])
+			write(1, &g_board[i][j], 1);
+		write(1, "\n", 1);
 	}
 	board_valid();
-	if (*file)
-		close(fd);
+	close(fd);
 }
