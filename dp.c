@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:34:41 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 00:09:50 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 10:15:16 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	g_max;
 
 void	first_location(void)
 {
-	printf("first_location\n");
 	int i;
 	int j;
 
@@ -38,12 +37,10 @@ void	first_location(void)
 			}
 		}
 	}
-	printf("first_location_finish\n");
 }
 
 void	set_tab(void)
 {
-	printf("set_tab\n");
 	int i;
 	int j;
 
@@ -62,7 +59,6 @@ void	set_tab(void)
 				g_tab[i][j] = 1;
 		}
 	}
-	printf("set_tab_finish\n");
 }
 
 void	dp(void)
