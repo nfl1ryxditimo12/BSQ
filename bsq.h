@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 16:24:40 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 10:59:29 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 11:49:37 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define COND_ERR "Condition is not valid\n"
 # define CANT_ALLOC "Memory allocation ERROR\n"
 # define BOARD_ERR "Board is not valid\n"
+# define 
 
 # include <unistd.h>
 # include <stdlib.h>

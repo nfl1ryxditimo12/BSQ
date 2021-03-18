@@ -6,7 +6,7 @@
 /*   By: seonkim <seonkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 15:43:33 by seonkim           #+#    #+#             */
-/*   Updated: 2021/03/18 10:58:57 by hyeojung         ###   ########.fr       */
+/*   Updated: 2021/03/18 11:49:18 by hyeojung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ char	*make_condition(char *cond)
 	g_fill = *(cond - 1);
 	g_obstacle = *(cond - 2);
 	g_blank = *(cond - 3);
-	printf("%d, %c, %c, %c\n", g_row_size, g_blank, g_obstacle, g_fill);
 	cond++;
 	return (cond);
 }
@@ -114,6 +113,7 @@ void	read_file(char *file)
 			write(1, &g_board[i][j], 1);
 		write(1, "\n", 1);
 	}
-	board_valid();
+	if (!board_valid())
+		print_error(BOARD_ERR);
 	close(fd);
 }
